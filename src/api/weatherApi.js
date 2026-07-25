@@ -3,11 +3,20 @@ const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
 export async function getWeather(city) {
   const url = `${BASE_URL}?q=${city}&units=metric&appid=${API_KEY}`;
-
   const response = await fetch(url);
-
   const data = await response.json();
+  return shapeWeather(data);
+}
 
+// same endpoint, lat/lon instead of q
+export async function getWeatherByCoords(lat, lon) {
+  const url = `${BASE_URL}?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`;
+  const response = await fetch(url);
+  const data = await response.json();
+  return shapeWeather(data);
+}
+
+function shapeWeather(data) {
   return {
     city: data.name,
     temperature: Math.round(data.main.temp),
