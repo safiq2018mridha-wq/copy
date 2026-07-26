@@ -25,7 +25,7 @@ function App() {
     <div className="min-h-screen bg-blue-50 flex justify-center p-4">
       <div className="w-full max-w-md mt-16 space-y-4">
         <h1 className="text-center text-3xl font-bold text-blue-600">
-          Weather App
+          Weather App by Location
         </h1>
         <SearchBar onSearch={setCity} />
         {geoDenied && !city && (
